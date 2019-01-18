@@ -101,6 +101,9 @@ public class JavaCollections {
         //Display TreeSet
         System.out.println(treeStr);
         
+        //use object typecasting treeStr set to a TreeSet to use .first() which will get last element in Set 
+        //it will be the biggest in the sorted set (tree sorts in ascending order
+        System.out.println("The last is: " + ((TreeSet<String>)treeStr).last());
         
         //TreeSet of Integer Type
         Set<Integer> treeInt = new TreeSet<>();
@@ -113,6 +116,12 @@ public class JavaCollections {
         treeInt.add(24);
         treeInt.add(99); //duplicate 
         
+        // display tree set
+        System.out.println("This is an Integer Tree Set: " + treeInt);
+        
+        //use object typecasting treeInt set to a TreeSet to use .last() which will get last element in Set 
+        //it will be the biggest in the sorted set (tree sorts in ascending order
+        System.out.println("This is the last: " + ((TreeSet<Integer>)treeInt).last());
         
         // is the set empty? (returns a boolean)
         System.out.println("Is the set empty? " + treeInt.isEmpty());
@@ -144,14 +153,9 @@ public class JavaCollections {
         promap.put("Randy", 18); // duplicate name see what it does
         promap.put("John", 18);
         
-        //Display content using Iterator
-        Set set = promap.entrySet();
-        Iterator iterator = set.iterator();
-        while(iterator.hasNext()) {
-            Map.Entry mapentry = (Map.Entry)iterator.next();
-            System.out.print("Name: " + mapentry.getKey() + " Age: ");
-            System.out.println(mapentry.getValue());
-        }
+        //Display elements in hash map
+        promap.entrySet().stream().forEach((name) -> { System.out.print("Student ID: " + name.getKey() + " Name: ");
+           System.out.println(name.getValue());});
         
         // getting age from map for Randy, notice how it removes a duplicate key 
         //and uses the latest value put in
@@ -179,15 +183,15 @@ public class JavaCollections {
        sidmap.put(55, "Brennan");
        sidmap.put(345, "Sally"); //duplicate to see how it handles it
        
-       //display content using Iterator, notice that it removes the duplicate and uses the latest value
-       Set names = sidmap.entrySet();
-       Iterator iterator = names.iterator();
-       while(iterator.hasNext()) {
-           Map.Entry mapentry = (Map.Entry)iterator.next();
-           System.out.print("Student ID: " + mapentry.getKey() + " Name: ");
-           System.out.println(mapentry.getValue());
+       //display content using for each, notice that it removes the duplicate and uses the latest value
+       for(Map.Entry<Integer, String> name : sidmap.entrySet()) {
+           System.out.print("Student ID: " + name.getKey() + " Name: ");
+           System.out.println(name.getValue());
        }
        
+       //another way to do the same thing as above but much cleaner and concise 
+       sidmap.entrySet().stream().forEach((name) -> { System.out.print("Student ID: " + name.getKey() + " Name: ");
+           System.out.println(name.getValue());});
        //get the size of the map
        System.out.println("The size of the tree map is: " + sidmap.size());
        
