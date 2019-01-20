@@ -16,7 +16,7 @@ public class MyRunnable implements Runnable {
    // public void run(){
        // System.out.println("It is my Runnable");
    // }
-    private String name;
+    private final String name;
      
     public MyRunnable(String sname) {
         name = sname;
@@ -24,6 +24,7 @@ public class MyRunnable implements Runnable {
     
     //Prints MyRunnable name and sleeps for 2s
     // The whole process is repeated 6 times
+    @Override
     public void run(){
         
         try{
@@ -34,18 +35,19 @@ public class MyRunnable implements Runnable {
                     Date day = new Date();
                     SimpleDateFormat forDate = new SimpleDateFormat("hh:mm:ss");
                     // prints the initial start time for every task
-                    System.out.println("Initial Start Time for" + " task name - " + name
-                                + " = " + forDate.format(day));
+                    System.out.println("Initial Start Time for - " + name
+                                + " : " + forDate.format(day));
                 }
                 else{
                     
                     Date day = new Date();
                     SimpleDateFormat forDate = new SimpleDateFormat("hh:mm:ss");
                     // prints the execution time for every task 
-                    System.out.println("Execute Time for task name - " + name + " = " + forDate.format(day));
+                    System.out.println("Execute Time for - " + name + " : " + forDate.format(day));
                 }
+               
                 Thread.sleep(2000);
-                
+                System.out.println(name + " is awake ");
             }
             System.out.println(name + " complete");
         }
