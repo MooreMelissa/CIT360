@@ -17,6 +17,7 @@ public class MyRunnable implements Runnable {
        // System.out.println("It is my Runnable");
    // }
     private final String name;
+    private final static Integer TRIES = 6;
      
     public MyRunnable(String sname) {
         name = sname;
@@ -28,7 +29,7 @@ public class MyRunnable implements Runnable {
     public void run(){
         
         try{
-            for(int i = 0; i<=6; i++){
+            for(int i = 0; i<=TRIES; i++){
                 
                 if (i==0){
                     
