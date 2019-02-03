@@ -5,13 +5,12 @@
  */
 package applicationcontrollerpattern;
 
-
-
 /**
  *
  * @author melissamoore
  */
 public interface Handler {
+
     public void execute(Integer input1, Integer input2);
-    
+
 }

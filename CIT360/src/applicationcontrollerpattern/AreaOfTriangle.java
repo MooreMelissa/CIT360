@@ -9,12 +9,13 @@ package applicationcontrollerpattern;
  *
  * @author melissamoore
  */
-public class AreaOfTriangle implements Handler{
+public class AreaOfTriangle implements Handler {
+
     @Override
-    public void execute(Integer input1, Integer input2){
+    public void execute(Integer input1, Integer input2) {
         Integer triangle = (input1 * input2) / 2;
         System.out.println("If base is " + input1 + " and "
-                    + "height is " + input2 + " Then the area of the triangle = " + triangle);
+                + "height is " + input2 + " Then the area of the triangle = " + triangle);
     }
-    
+
 }

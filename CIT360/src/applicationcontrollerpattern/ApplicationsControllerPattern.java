@@ -12,75 +12,76 @@ import java.util.*;
  * @author melissamoore
  */
 public class ApplicationsControllerPattern {
-     /**
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-            // scanner so will recognize users keyboard input
-            Scanner input = new Scanner(System.in);
-            ApplicationController calculate = new ApplicationController();
-            Integer input1;
-            Integer input2;
-            Boolean error;
-            String choice;
-            
-            do {
-                try {
-                    error = false;
-                    System.out.println("Enter a number:");
-                    input1 = Integer.parseInt(input.nextLine());
-                } catch (NumberFormatException e) {
-                    input1 = null;
-                    error = false;
-                    System.out.println("Not a valid number");
-                    System.out.println("Enter a number:");
-                    input1 = Integer.parseInt(input.nextLine());
-                }
-                    if (input1 == 0) {
-                        error = true;
-                        System.out.println("Value must be greater than zero");
-                    }
-                
-                } while (error);
-            
-            do {
-                try {
-                    error = false;
-                    System.out.println("Enter another number");
-                    input2 = Integer.parseInt(input.nextLine());
-                } catch (NumberFormatException e) {
-                    input2 = null;
-                    error = false;
-                    System.out.println("Not a valid number");
-                    System.out.println("Enter another number");
-                    input2 = Integer.parseInt(input.nextLine());
-                }
-                    if (input2 == 0) {
-                        error = true;
-                        System.out.println("Value must be greater than zero");
-                    }
-            } while (error);
-                
-            
-            try{
-                     
-                    System.out.print("Enter the letter to find\n" + "A = Area of Rectangle\n"
-                         + "P = Perimeter of Rectangle\n" + "T = Area of Triangle\n");
-                    choice = input.nextLine().toUpperCase();
-                
+
+        // scanner so will recognize users keyboard input
+        Scanner input = new Scanner(System.in);
+        ApplicationController calculate = new ApplicationController();
+        Integer input1;
+        Integer input2;
+        Boolean error;
+        String choice;
+
+        do {
+            try {
+                error = false;
+                System.out.println("Enter a number:");
+                input1 = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException nfe) {
+                error = false;
+                System.out.println("Not a valid number");
+                System.out.println("Enter a number:");
+                input1 = Integer.parseInt(input.nextLine());
+            }
+            if (input1 == 0) {
+                error = true;
+                System.out.println("Value must be greater than zero");
+            }
+
+        } while (error);
+
+        do {
+            try {
+                error = false;
+                System.out.println("Enter another number");
+                input2 = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException nfe) {
+                error = false;
+                System.out.println("Not a valid number");
+                System.out.println("Enter another number");
+                input2 = Integer.parseInt(input.nextLine());
+            }
+            if (input2 == 0) {
+                error = true;
+                System.out.println("Value must be greater than zero");
+            }
+        } while (error);
+
+        do {
+            try {
+                error = false;
+                System.out.print("Enter the letter to find\n" + "A = Area of Rectangle\n"
+                        + "P = Perimeter of Rectangle\n" + "T = Area of Triangle\n");
+                choice = input.nextLine().toUpperCase();
+                if (choice.equals("A") || choice.equals("T") || choice.equals("P")) {
+                    //ApplicationController.handleIt(choice, input1, input2);
                     calculate.handleIt(choice, input1, input2);
-                    
-                } catch (NullPointerException ne){
-                    System.out.println("Not a valid choice");
-                    System.out.print("Enter the letter to find\n" + "A = Area of Rectangle\n"
-                         + "P = Perimeter of Rectangle\n" + "T = Area of Triangle\n");
-                    choice = input.nextLine().toUpperCase();
-                    
-                    calculate.handleIt(choice, input1, input2);   
+                } else {
+                    error = true;
+                    System.out.println("Not a valid entry");
                 }
-            
-    } 
-        
-    
+
+            } catch (NullPointerException npe) {
+                error = true;
+                System.out.println("Not a valid choice");
+
+            }
+        } while (error);
+
+    }
+
 }
