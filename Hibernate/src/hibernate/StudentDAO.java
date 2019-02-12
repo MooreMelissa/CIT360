@@ -6,8 +6,11 @@
 package hibernate;
 
 import java.util.*;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 
 /**
  *
@@ -70,6 +73,26 @@ public class StudentDAO {
             
         }
     }
+    
+    public Integer addStudent(String name) {
+        Session addSession = factory.openSession();
+        Transaction tx = null;
+      Integer studentsID = null;
+      
+      try {
+         tx = addSession.beginTransaction();
+         Student students = new Student(name);
+         studentsID = (Integer) addSession.save(students); 
+         tx.commit();
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+      } finally {
+         session.close(); 
+      }
+      return studentsID;
+   }
+   
     
     
 }
