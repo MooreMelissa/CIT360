@@ -5,8 +5,6 @@ package hibernate;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -15,30 +13,30 @@ import javax.persistence.*;
  * @author melissamoore
  */
 @Entity
-@Table(name ="Student")
+@Table(name = "Student")
 public class Student implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID")
+    @Column(name = "ID")
     private Integer id;
-    
-    @Column(name="Name")
+
+    @Column(name = "Name")
     private String name;
 
     public Student() {
 
     }
-    
-    public Student(Integer id){
+
+    public Student(Integer id) {
         this.id = id;
     }
-    
+
     public Student(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
-    
+
     public Student(String name) {
         this.name = name;
     }

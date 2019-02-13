@@ -17,14 +17,15 @@ import org.hibernate.service.ServiceRegistry;
  * @author melissamoore
  */
 public class HibernateUtils {
+
     private static final SessionFactory sessionFactory = buildSessionFactory();
-    
+
     private static SessionFactory buildSessionFactory() {
-         
+
         try {
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
                     configure("hibernate/hibernate.cfg.xml").build();
-              
+
             Metadata metadata = new MetadataSources(serviceRegistry).
                     getMetadataBuilder().build();
             return metadata.getSessionFactoryBuilder().build();
@@ -33,11 +34,11 @@ public class HibernateUtils {
             throw new ExceptionInInitializerError(ex);
         }
     }
-    
+
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-    
+
     public static void shutdown() {
         getSessionFactory().close();
     }
