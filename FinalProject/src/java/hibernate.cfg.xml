@@ -1,7 +1,4 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -41,29 +38,18 @@ made subject to such option by the copyright holder.
 
 Contributor(s):
 -->
-
-<!--
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/PianoStudents</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="current_session_context_class">thread</property>
-    <property name="show_sql">true</property>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/PianoStudents</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="show_sql">true</property>
     
-    <mapping class="Model.StudentInfo"/>
-  </session-factory>
-</hibernate-configuration>
--->
-<hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/PianoStudents</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="show_sql">true</property>
-     
-    <mapping class="Model.StudentInfo" catagory="PianoStudents" table="StudentInfo" />
-  </session-factory>
+        <mapping class="Model.StudentInfo"/>
+    </session-factory>
 </hibernate-configuration>
