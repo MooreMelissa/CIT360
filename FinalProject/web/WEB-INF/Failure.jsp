@@ -14,5 +14,6 @@
     <body>
         <h1>Sorry!!!!</h1>
         <p>Student Information Failed to Submit</p>
+        <a href="index.html">Return Home Page</a>
     </body>
 </html>

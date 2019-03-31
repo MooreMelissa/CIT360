@@ -14,5 +14,6 @@
     <body>
         <h1>Congratulation!!!</h1>
         <p>Student Information has been Successfully Submitted</p>
+        <a href="index.html">Return to Home</a>
     </body>
 </html>
