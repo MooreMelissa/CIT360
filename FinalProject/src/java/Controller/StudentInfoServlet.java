@@ -41,52 +41,19 @@ public class StudentInfoServlet extends HttpServlet {
        
         response.setContentType("text/html;charset=UTF-8");
         
-       // try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-       //     out.println("<!DOCTYPE html>");
-       //     out.println("<html>");
-       //     out.println("<head>");
-       //     out.println("<title>Servlet StudentInfoServlet</title>");            
-       //     out.println("</head>");
-       //     out.println("<body>");
-       //     out.println("<h1>Servlet StudentInfoServlet at " + request.getContextPath() + "</h1>");
-       //     out.println("</body>");
-       //     out.println("</html>");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet StudentInfoServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet StudentInfoServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
        
-        boolean flag = false;
-        RequestDispatcher requestDispatcher = null;
-        try{
-            StudentInfo student= new StudentInfo();
-          
-            student.setFirstname(request.getParameter("firstname"));
-            student.setLastname(request.getParameter("lastname"));
-            student.setAge(Integer.parseInt(request.getParameter("age")));
-            student.setPhone(request.getParameter("phone"));
-            student.setPianolevel(request.getParameter("pianolevel"));
-            
-            Configuration configuration = new Configuration().configure();
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
-            
-            Session session = sessionFactory.openSession();
-            Transaction transaction=session.beginTransaction();
-            session.save(student);
-            transaction.commit();
-            flag=true;
-            
-            
-            
-        } 
-        catch(NumberFormatException | HibernateException e){
-           PrintWriter out = response.getWriter();
-            out.println(e); 
-        }
-        
-        if (flag) {
-           requestDispatcher = request.getRequestDispatcher("/WEB-INF/Success.jsp");
-           requestDispatcher.forward(request, response);
-        } else {
-           requestDispatcher = request.getRequestDispatcher("/WEB-INF/Failure.jsp");
-           requestDispatcher.forward(request, response);
+      
         }
             
         
@@ -106,8 +73,8 @@ public class StudentInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        processRequest(request, response);
-       /**
+      //  processRequest(request, response);
+       
         response.setContentType("text/html");
         boolean flag = false;
         RequestDispatcher requestDispatcher = null;
@@ -144,7 +111,7 @@ public class StudentInfoServlet extends HttpServlet {
            requestDispatcher = request.getRequestDispatcher("/WEB_INF/Failure.jsp");
            requestDispatcher.forward(request, response);
         }
-        */
+        
     }
 
     /**
