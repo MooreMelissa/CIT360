@@ -93,9 +93,9 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
                 store += stringify.toJSONString();
             
             }
-            File file = new File("StudentList.txt"); 
-            file.createNewFile();
-            FileWriter writer = new FileWriter(file);
+            //File file = new File("users/melissamoore/NetBeansProjects/CIT360/FinalProject/textfiles/StudentList.txt"); 
+            //file.createNewFile();
+            FileWriter writer = new FileWriter("/Users/melissamoore/NetBeansProjects/CIT360/FinalProject/textfiles/StudentList.txt");
             try {
                 writer.write(store);
                 
