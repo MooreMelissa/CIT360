@@ -29,44 +29,26 @@ import org.json.simple.JSONObject;
  */
 public class StudentList implements Handler {
         
-   // public void run() throws IOException {
+    //public void run() throws IOException {
 
-public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         response.setContentType("text/html");
         boolean flag = false;
         RequestDispatcher requestDispatcher = null;
         try {
-           
-            //SessionFactory factory = new Configuration().configure().buildSessionFactory();
-            //SessionFactory fac = factory;
-            //Session ses = fac.openSession();
-            
             Configuration configuration = new Configuration().configure();
             SessionFactory sessionFactory = configuration.buildSessionFactory();
             
             Session session = sessionFactory.openSession();
-            //Transaction transaction=session.beginTransaction();
-            //session.save(student);
-            //transaction.commit();
-            
-           // String hql = "SELECT s FROM "
-            //String sql = "from Model.StudentInfo";
-           // List<StudentInfo> listResults = (List<StudentInfo>) ses.createQuery(sql).getResultList();
-            
-          //  ses.close();
-            
            
             String hql = "SELECT s FROM StudentInfo s";
-           org.hibernate.query.Query<StudentInfo> query = session.createQuery(hql);
-            
+           //org.hibernate.query.Query<StudentInfo> query = session.createQuery(hql);
+            Query<StudentInfo> query = session.createQuery(hql);
+           
             List list = query.list();
             
-            
-            
             session.close();
-            
-           //session.close();
             
             List<StudentInfo> listResults = list;
             

@@ -62,8 +62,8 @@ public class StudentListServlet extends HttpServlet {
        // processRequest(request, response);
         String action = request.getParameter("action");
         //if ("list".equals(action)) {
-      controller.handleIt(action, request, response);
-       // controller.handleIt(action, request, response);
+      
+        controller.handleIt(action, request, response);
       // }else {
       //     controller.handleIt("list", request, response);
      //  }

@@ -25,14 +25,15 @@ public class StudentController {
     }
 
 
-    void handleIt(String choice, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
+    public static void handleIt(String choice, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
         Handler math = hashMapOfChoices.get(choice);
-        out.println(choice + hashMapOfChoices.containsKey(choice));
+       // out.println(choice + hashMapOfChoices.containsKey(choice));
         math.execute(request, response);
         
     }
+    
+    
 }
 
     

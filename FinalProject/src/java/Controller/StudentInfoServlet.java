@@ -76,8 +76,8 @@ public class StudentInfoServlet extends HttpServlet {
         //  processRequest(request, response);
         
         
-        controller.handleIt("submit", request, response);
-        
+       
+       controller.handleIt("submit", request, response); 
         
         
         
