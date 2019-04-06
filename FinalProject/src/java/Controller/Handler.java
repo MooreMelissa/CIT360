@@ -17,6 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface Handler {
    
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-
+    
 
 }

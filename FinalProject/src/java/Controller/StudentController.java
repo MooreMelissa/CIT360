@@ -21,15 +21,17 @@ public class StudentController {
 
     public  StudentController() {
         hashMapOfChoices.put("submit", new StudentRegister());
-        
+        hashMapOfChoices.put("list", new StudentList());
     }
 
 
     void handleIt(String choice, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+    
+    
         Handler math = hashMapOfChoices.get(choice);
         out.println(choice + hashMapOfChoices.containsKey(choice));
         math.execute(request, response);
+        
     }
 }
 

@@ -25,6 +25,7 @@ import org.hibernate.cfg.Configuration;
 public class StudentRegister implements Handler {
     
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    
         response.setContentType("text/html");
         boolean flag = false;
         RequestDispatcher requestDispatcher = null;
