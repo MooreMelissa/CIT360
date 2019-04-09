@@ -21,7 +21,9 @@ public class StudentController {
 
     public  StudentController() {
         hashMapOfChoices.put("submit", new StudentRegister());
-        hashMapOfChoices.put("list", new StudentList());
+        hashMapOfChoices.put("save", new StudentList());
+        hashMapOfChoices.put("list", new DisplayStudentList());
+        hashMapOfChoices.put("edit", new EditStudentList());
     }
 
 
