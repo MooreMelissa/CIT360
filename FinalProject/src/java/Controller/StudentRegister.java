@@ -56,9 +56,11 @@ public class StudentRegister implements Handler {
         }
         
         if (flag) {
+           PianoStuTesting.hibernateMessage = true;
            requestDispatcher = request.getRequestDispatcher("/WEB-INF/Success.jsp");
            requestDispatcher.forward(request, response);
         } else {
+           PianoStuTesting.hibernateMessage = false;
            requestDispatcher = request.getRequestDispatcher("/WEB_INF/Failure.jsp");
            requestDispatcher.forward(request, response);
         }

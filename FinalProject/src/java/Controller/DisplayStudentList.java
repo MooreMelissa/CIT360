@@ -73,8 +73,9 @@ public class DisplayStudentList implements Handler {
                
                
                out.write("<br><br><br><a href=\"index.html\">Return Home Page</a>");
-       
+               PianoStuTesting.display = true;
         } catch (HibernateException ex) { 
+                PianoStuTesting.display = false;
                 System.err.println("Failed to create sessionFactory object" + ex);
                 throw new ExceptionInInitializerError(ex);
         } 

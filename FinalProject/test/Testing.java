@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Controller.DisplayStudentList;
 import Controller.StudentInfoServlet;
 import Controller.StudentRegister;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockito.Mockito;
-
+import Controller.PianoStuTesting;
 /**
  *
  * @author melissamoore
@@ -26,7 +27,7 @@ public class Testing extends Mockito {
     }
 
     @Test
-    public void AllTests() throws IOException, ServletException{
+    public void StudentRegisterTests() throws IOException, ServletException{
        
         HttpServletRequest request = mock(HttpServletRequest.class);       
         HttpServletResponse response = mock(HttpServletResponse.class);  
@@ -49,12 +50,31 @@ public class Testing extends Mockito {
 
         verify(request, atLeast(1)).getParameter("firstname"); // only if you want to verify username was called...
         verify(request, times(1)).getRequestDispatcher("/WEB-INF/Success.jsp");
-        //writer.flush(); // it may not have been flushed yet...
-        assertTrue(stringWriter.toString().contains("My expected string"));
+       // writer.flush(); // it may not have been flushed yet...
+        //assertTrue(stringWriter.toString().contains("My expected string"));
+        assertSame(request.getParameter("firstname"), "Sam");
+        
+        
+        assertEquals(PianoStuTesting.hibernateMessage, true);
         
         
     }
     
+    @Test
+    public void DisplayStudentList() throws ServletException, IOException {
+        
+        HttpServletRequest request = mock(HttpServletRequest.class);       
+        HttpServletResponse response = mock(HttpServletResponse.class); 
+        
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        when(response.getWriter()).thenReturn(writer);
+        
+        new DisplayStudentList().execute(request, response);
+        assertNotEquals(PianoStuTesting.display, false);
+        
+    
+}
     
 } 
     
