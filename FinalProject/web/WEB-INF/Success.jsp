@@ -12,7 +12,7 @@
         <title>JSP Success Page</title>
     </head>
     <body>
-        <h1>CONGRATULATIONS!!!</h1>
+        <h1>SUCCESS!!!</h1>
         <p>The Requested Action was Successful</p>
         <a href="index.html">Return to Home</a>
     </body>
