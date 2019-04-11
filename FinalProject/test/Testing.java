@@ -50,7 +50,7 @@ public class Testing extends Mockito {
         verify(request, atLeast(1)).getParameter("firstname"); // only if you want to verify username was called...
         verify(request, times(1)).getRequestDispatcher("/WEB-INF/Success.jsp");
         //writer.flush(); // it may not have been flushed yet...
-        //assertTrue(stringWriter.toString().contains("My expected string"));
+        assertTrue(stringWriter.toString().contains("My expected string"));
         
         
     }
