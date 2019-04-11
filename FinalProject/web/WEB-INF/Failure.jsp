@@ -12,8 +12,8 @@
         <title>JSP Failure Page</title>
     </head>
     <body>
-        <h1>Sorry!!!!</h1>
-        <p>Student Information Failed to Submit</p>
+        <h1>SORRY!!!!</h1>
+        <p>The Requested Action Failed</p>
         <a href="index.html">Return Home Page</a>
     </body>
 </html>

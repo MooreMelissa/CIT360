@@ -5,9 +5,7 @@
  */
 package Controller;
 
-import Model.HibernateUtils;
 import Model.StudentInfo;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.json.simple.JSONObject;
@@ -29,7 +26,7 @@ import org.json.simple.JSONObject;
  */
 public class StudentList implements Handler {
         
-    //public void run() throws IOException {
+    
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +41,7 @@ public class StudentList implements Handler {
             Session session = sessionFactory.openSession();
            
             String hql = "SELECT s FROM StudentInfo s";
-           //org.hibernate.query.Query<StudentInfo> query = session.createQuery(hql);
+           
             Query<StudentInfo> query = session.createQuery(hql);
            
             List list = query.list();
@@ -76,8 +73,7 @@ public class StudentList implements Handler {
                 store += stringify.toJSONString();
             
             }
-            //File file = new File("users/melissamoore/NetBeansProjects/CIT360/FinalProject/textfiles/StudentList.txt"); 
-            //file.createNewFile();
+            
             FileWriter writer = new FileWriter("/Users/melissamoore/NetBeansProjects/CIT360/FinalProject/textfiles/StudentList.txt");
             try {
                 writer.write(store);

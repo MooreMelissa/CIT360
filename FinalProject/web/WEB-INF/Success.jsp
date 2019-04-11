@@ -12,8 +12,8 @@
         <title>JSP Success Page</title>
     </head>
     <body>
-        <h1>Congratulation!!!</h1>
-        <p>Student Information has been Successfully Submitted</p>
+        <h1>CONGRATULATIONS!!!</h1>
+        <p>The Requested Action was Successful</p>
         <a href="index.html">Return to Home</a>
     </body>
 </html>

@@ -5,9 +5,7 @@
  */
 package Controller;
 
-import Model.StudentInfo;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,42 +15,44 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  *
  * @author melissamoore
  */
-public class StudentRegister implements Handler {
-    
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    
+public class RemoveStudentInfo implements Handler {
+     @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         response.setContentType("text/html");
         boolean flag = false;
         RequestDispatcher requestDispatcher = null;
-        try{
-            StudentInfo student= new StudentInfo();
-            
-            student.setFirstname(request.getParameter("firstname"));
-            student.setLastname(request.getParameter("lastname"));
-            student.setAge(Integer.parseInt(request.getParameter("age")));
-            student.setPhone(request.getParameter("phone"));
-            student.setPianolevel(request.getParameter("pianolevel"));
+        try {
             
             Configuration configuration = new Configuration().configure();
             SessionFactory sessionFactory = configuration.buildSessionFactory();
+            Transaction tx = null;
             
             Session session = sessionFactory.openSession();
-            Transaction transaction=session.beginTransaction();
-            session.save(student);
-            transaction.commit();
-            flag=true;
+            //session.getTransaction().begin();
+            tx = session.getTransaction();
+            tx.begin();
             
+            String hql = "delete StudentInfo WHERE ID = :id";
+            Query query = session.createQuery(hql);
+        
+            query.setParameter("id", request.getParameter("id"));
+            int result = query.executeUpdate();
             
+            tx.commit();
+            session.close();
+            flag = true;
             
-        } 
-        catch(NumberFormatException | HibernateException e){
-           PrintWriter out = response.getWriter();
-            out.println(e); 
+        }catch (HibernateException ex) {
+            System.err.println("Failed to create sessionFactory object" + ex);
+            throw new ExceptionInInitializerError(ex);
+        
         }
         
         if (flag) {
@@ -62,6 +62,5 @@ public class StudentRegister implements Handler {
            requestDispatcher = request.getRequestDispatcher("/WEB_INF/Failure.jsp");
            requestDispatcher.forward(request, response);
         }
-    }    
-    
+    }
 }

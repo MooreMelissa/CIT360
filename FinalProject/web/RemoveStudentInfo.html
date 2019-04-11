@@ -6,19 +6,16 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Edit Student Information</title>
+        <title>Remove Student Info</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
-            <h1>Edit Student Info</h1>
-            <form action="EditStudentInfoServlet" method="get">
-                
+            <h1>Remove Student From Piano List</h1>
+            <form action="RemoveStudentInfoServlet" method="get">
                 <p>Student ID <input name="id" type="text"/></p>
-                <p>Phone Number <input name="phone" type="text"/></p>
-                <p>Edit Student Information <input type="submit" name="action" value="edit" /></p>
-           
+                <p>Remove Student <input type="submit" name="action" value="delete"/></p>
             </form>
             
             <br>

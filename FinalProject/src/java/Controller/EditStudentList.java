@@ -5,11 +5,7 @@
  */
 package Controller;
 
-import Model.HibernateUtils;
-import Model.StudentInfo;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +16,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import org.json.simple.JSONObject;
 
 /**
  *
@@ -40,19 +35,17 @@ public class EditStudentList implements Handler {
             Transaction tx = null;
             
             Session session = sessionFactory.openSession();
-            //session.getTransaction().begin();
+            
             tx = session.getTransaction();
             tx.begin();
             
             String hql = "UPDATE StudentInfo set phone = :phone " + "WHERE ID = :id";
             Query query = session.createQuery(hql);
-            //Query<StudentInfo> query = session.createQuery(hql);
-            //query.setParameter("phone", "2345431234");
-           // query.setParameter("id", "1");
+            
             query.setParameter("phone", request.getParameter("phone"));
             query.setParameter("id", request.getParameter("id"));
             int result = query.executeUpdate();
-            //session.getTransaction().commit();
+            
             tx.commit();
             session.close();
             flag = true;

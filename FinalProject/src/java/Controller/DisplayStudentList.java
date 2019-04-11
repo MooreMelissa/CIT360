@@ -9,7 +9,6 @@ import Model.StudentInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,15 +32,12 @@ public class DisplayStudentList implements Handler {
             Configuration configuration = new Configuration().configure();
             SessionFactory sessionFactory = configuration.buildSessionFactory();
             
-            Session session = sessionFactory.openSession();
-           
-            String hql = "SELECT s FROM StudentInfo s";
-           
-            Query<StudentInfo> query = session.createQuery(hql);
-            
-             List list = query.list();
-            
-            session.close();
+            List list;
+            try (Session session = sessionFactory.openSession()) {
+                String hql = "SELECT s FROM StudentInfo s";
+                Query<StudentInfo> query = session.createQuery(hql);
+                list = query.list();
+            }
             
             List<StudentInfo> listResults = list;
             PrintWriter out = response.getWriter();

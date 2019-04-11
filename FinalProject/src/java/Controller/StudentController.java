@@ -24,13 +24,14 @@ public class StudentController {
         hashMapOfChoices.put("save", new StudentList());
         hashMapOfChoices.put("list", new DisplayStudentList());
         hashMapOfChoices.put("edit", new EditStudentList());
+        hashMapOfChoices.put("delete", new RemoveStudentInfo());
     }
 
 
     public static void handleIt(String choice, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
         Handler math = hashMapOfChoices.get(choice);
-       // out.println(choice + hashMapOfChoices.containsKey(choice));
+       
         math.execute(request, response);
         
     }
