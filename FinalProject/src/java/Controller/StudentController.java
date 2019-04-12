@@ -17,9 +17,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author melissamoore
  */
 public class StudentController {
+
     public static HashMap<String, Handler> hashMapOfChoices = new HashMap<String, Handler>();
 
-    public  StudentController() {
+    public StudentController() {
         hashMapOfChoices.put("submit", new StudentRegister());
         hashMapOfChoices.put("save", new StudentList());
         hashMapOfChoices.put("list", new DisplayStudentList());
@@ -27,17 +28,12 @@ public class StudentController {
         hashMapOfChoices.put("delete", new RemoveStudentInfo());
     }
 
-
     public static void handleIt(String choice, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
+
         Handler math = hashMapOfChoices.get(choice);
-       
+
         math.execute(request, response);
-        
+
     }
-    
-    
+
 }
-
-    
-

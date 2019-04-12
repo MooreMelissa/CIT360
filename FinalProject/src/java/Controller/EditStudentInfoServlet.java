@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "EditStudentInfoServlet", urlPatterns = {"/EditStudentInfoServlet"})
 public class EditStudentInfoServlet extends HttpServlet {
+
     private static final StudentController controller = new StudentController();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +39,7 @@ public class EditStudentInfoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditStudentInfoServlet</title>");            
+            out.println("<title>Servlet EditStudentInfoServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EditStudentInfoServlet at " + request.getContextPath() + "</h1>");
@@ -59,10 +61,10 @@ public class EditStudentInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-         String action = request.getParameter("action");
-      
+        String action = request.getParameter("action");
+
         controller.handleIt(action, request, response);
-        
+
     }
 
     /**

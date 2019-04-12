@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author melissamoore
  */
-@WebServlet(name="StudentInfoServlet", urlPatterns=("/StudentInfoServlet"))
+@WebServlet(name = "StudentInfoServlet", urlPatterns = ("/StudentInfoServlet"))
 public class StudentInfoServlet extends HttpServlet {
+
     private static final StudentController controller = new StudentController();
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,27 +34,24 @@ public class StudentInfoServlet extends HttpServlet {
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // add request header
-       // add request header
-       
+        // add request header
+
         response.setContentType("text/html;charset=UTF-8");
-        
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet StudentInfoServlet</title>");            
+            out.println("<title>Servlet StudentInfoServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet StudentInfoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-       
-      
+
         }
-            
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,15 +66,10 @@ public class StudentInfoServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //  processRequest(request, response);
-        
-        
-       
-       controller.handleIt("submit", request, response); 
-        
-        
-        
+        controller.handleIt("submit", request, response);
+
     }
 
     /**
@@ -92,8 +84,7 @@ public class StudentInfoServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
+
     }
 
     /**

@@ -18,6 +18,7 @@ import org.hibernate.Transaction;
  * @author melissamoore
  */
 public class StudentInfoDAO {
+
     SessionFactory factory = null;
     Session session = null;
 
@@ -97,5 +98,3 @@ public class StudentInfoDAO {
     }
 
 }
-
-

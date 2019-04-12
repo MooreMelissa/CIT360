@@ -10,6 +10,7 @@ package Controller;
  * @author melissamoore
  */
 public class PianoStuTesting {
+
     public static boolean hibernateMessage;
     public static boolean display;
 }

@@ -15,39 +15,38 @@ import javax.persistence.*;
 @Entity
 @Table(name = "StudentInfo")
 public class StudentInfo implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
-    
+
     @Column(name = "firstname")
     private String firstname;
-    
+
     @Column(name = "lastname")
     private String lastname;
-    
+
     @Column(name = "age")
     private Integer age;
-    
+
     @Column(name = "phone")
     private String phone;
-    
+
     @Column(name = "pianolevel")
     private String pianolevel;
 
     public StudentInfo() {
     }
 
-    public StudentInfo(Integer id){
+    public StudentInfo(Integer id) {
         this.id = id;
     }
-    
-    public StudentInfo(String firstname){
+
+    public StudentInfo(String firstname) {
         this.firstname = firstname;
     }
-    
-    
+
     public StudentInfo(Integer id, String firstname, String lastname, Integer age, String phone, String pianolevel) {
         this.id = id;
         this.firstname = firstname;
@@ -57,8 +56,6 @@ public class StudentInfo implements Serializable {
         this.pianolevel = pianolevel;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -106,10 +103,10 @@ public class StudentInfo implements Serializable {
     public void setPianolevel(String pianolevel) {
         this.pianolevel = pianolevel;
     }
-    
+
     @Override
-    public String toString(){
-        return "StudentInfo{" + "ID=" + id + ", firstname=" + firstname + ", lastname=" 
+    public String toString() {
+        return "StudentInfo{" + "ID=" + id + ", firstname=" + firstname + ", lastname="
                 + lastname + ", age=" + age + ", phone=" + phone + "pianolevel=" + pianolevel + '}';
     }
-    }
+}

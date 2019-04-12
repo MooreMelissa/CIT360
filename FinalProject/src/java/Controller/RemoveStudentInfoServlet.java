@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "RemoveStudentInfoServlet", urlPatterns = {"/RemoveStudentInfoServlet"})
 public class RemoveStudentInfoServlet extends HttpServlet {
+
     private static final StudentController controller = new StudentController();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +39,7 @@ public class RemoveStudentInfoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RemoveStudentInfoServlet</title>");            
+            out.println("<title>Servlet RemoveStudentInfoServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet RemoveStudentInfoServlet at " + request.getContextPath() + "</h1>");
@@ -60,9 +62,9 @@ public class RemoveStudentInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String action = request.getParameter("action");
-      
+
         controller.handleIt(action, request, response);
-        
+
     }
 
     /**

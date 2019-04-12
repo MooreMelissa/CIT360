@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author melissamoore
  */
 public interface Handler {
-   
+
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
-    
 
 }

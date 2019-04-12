@@ -23,28 +23,28 @@ import org.hibernate.query.Query;
  * @author melissamoore
  */
 public class DisplayStudentList implements Handler {
-   
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        
+
         try {
             Configuration configuration = new Configuration().configure();
             SessionFactory sessionFactory = configuration.buildSessionFactory();
-            
+
             List list;
             try (Session session = sessionFactory.openSession()) {
                 String hql = "SELECT s FROM StudentInfo s";
                 Query<StudentInfo> query = session.createQuery(hql);
                 list = query.list();
             }
-            
+
             List<StudentInfo> listResults = list;
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
-            
+
             String table = "<table>";
-            
+
             for (int i = 0; i < listResults.size(); i++) {
                 table += "<tr>";
                 table += "<td>";
@@ -65,26 +65,20 @@ public class DisplayStudentList implements Handler {
                 table += "<td>";
                 table += listResults.get(i).getPianolevel();
                 table += "</td>";
-                table += "</tr>";            
-                
+                table += "</tr>";
+
             }
-               table += "</table>";
-               out.write(table);
-               
-               
-               out.write("<br><br><br><a href=\"index.html\">Return Home Page</a>");
-               PianoStuTesting.display = true;
-        } catch (HibernateException ex) { 
-                PianoStuTesting.display = false;
-                System.err.println("Failed to create sessionFactory object" + ex);
-                throw new ExceptionInInitializerError(ex);
-        } 
-           
-            
+            table += "</table>";
+            out.write(table);
+
+            out.write("<br><br><br><a href=\"index.html\">Return Home Page</a>");
+            PianoStuTesting.display = true;
+        } catch (HibernateException ex) {
+            PianoStuTesting.display = false;
+            System.err.println("Failed to create sessionFactory object" + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+
     }
-        
-}    
-    
 
-
-   
+}
